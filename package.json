@@ -2,12 +2,13 @@
   "name": "windows-quick",
   "version": "1.0.0",
   "description": "Windows Quick is a tool search and command like Spotlight search on Mac OS and more",
-  "main": "main/main.js",
+  "main": "build/main.js",
   "scripts": {
     "dev": "cross-env NODE_ENV='dev' node fuse.js",
-		"build": "node fuse.js",
-		"start": "cross-env ENV='dev' electron .",
-		"compile-win32": "npm run build && electron-builder -w -p always"
+    "build": "node fuse.js",
+    "start": "cross-env ENV='dev' electron .",
+    "compile-win32": "npm run build && electron-builder -w -p always",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": {
     "type": "git",
@@ -30,27 +31,28 @@
   },
   "homepage": "https://github.com/RoboWonder/Windows-Quick#readme",
   "devDependencies": {
-		"@types/node": "^11.11.3",
-		"@types/react": "^16.8.8",
-		"@types/react-dom": "^16.8.2",
-		"@types/styled-components": "^4.1.12",
-		"concurrently": "^4.1.0",
-		"cross-env": "^5.2.0",
-		"electron": "^4.1.0",
-		"electron-builder": "^20.39.0",
-		"fuse-box": "^3.7.1",
-		"tslint-config-airbnb": "^5.11.1",
-		"typescript": "^3.3.3333",
-		"typescript-plugin-styled-components": "^1.3.0"
-	},
-	"dependencies": {
-		"electron-updater": "^4.0.6",
-		"file-type": "^10.9.0",
-		"gsap": "^2.1.2",
-		"mobx": "^5.9.0",
-		"mobx-react": "^5.4.3",
-		"react": "^16.8.4",
-		"react-dom": "^16.8.4",
-		"styled-components": "^4.1.3"
-	}
+    "@types/node": "^11.11.3",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/styled-components": "^4.1.12",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "electron": "^4.1.0",
+    "electron-builder": "^20.39.0",
+    "fuse-box": "^3.7.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.3.3333",
+    "typescript-plugin-styled-components": "^1.3.0"
+  },
+  "dependencies": {
+    "electron-updater": "^4.0.6",
+    "file-type": "^10.9.0",
+    "gsap": "^2.1.2",
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "styled-components": "^4.1.3",
+    "tslint": "^5.15.0"
+  }
 }
