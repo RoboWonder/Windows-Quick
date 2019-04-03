@@ -1,0 +1,29 @@
+{
+  "name": "windows-quick",
+  "version": "1.0.0",
+  "description": "Windows Quick is a tool search and command like Spotlight search on Mac OS and more",
+  "main": "main/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoboWonder/Windows-Quick.git"
+  },
+  "keywords": [
+    "windows",
+    "search",
+    "windows",
+    "command",
+    "spotlight",
+    "search",
+    "on",
+    "desktop"
+  ],
+  "author": "Vergo D. Tran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RoboWonder/Windows-Quick/issues"
+  },
+  "homepage": "https://github.com/RoboWonder/Windows-Quick#readme"
+}
