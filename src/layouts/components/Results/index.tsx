@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-
+import controller from '@vergo/main/controller';
 import { StyledResults } from './style';
 import { ResultItem } from '../ResultItem';
 
@@ -15,7 +15,9 @@ const onMouseDown = (e: React.MouseEvent) => {
 export const Results = observer(({ visible }: Props) => {
   return (
     <StyledResults visible={visible} onMouseDown={onMouseDown}>
-        <ResultItem  />
+    {controller.resultController.results.map(x => {
+      <ResultItem result={x} />
+    })}
     </StyledResults>
   );
 });

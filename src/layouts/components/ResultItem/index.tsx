@@ -1,26 +1,32 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import controller from '@vergo/main/controller';
+import { Result } from '@vergo/main/results/model';
 
 import {
   StyledContainer,
   PrimaryText,
-  Dash,
   SecondaryText,
   Icon,
 } from './style';
 
-const selected = false;
-const hovered = false;
+interface Props {
+  result: Result;
+}
 
-export const ResultItem = observer(() => {
+export const ResultItem = observer((result: Props) => {
+  const { hovered } = result;
+  const { primaryText, secondaryText } = result;
+
+  const selected = controller.resultController.selected === result.id;
 
   return (
     <StyledContainer
       selected={selected}
       hovered={hovered}
     >
-      <PrimaryText>Visual Studio Code</PrimaryText>
-      <SecondaryText>Desktop App</SecondaryText>
+      <PrimaryText>{primaryText}</PrimaryText>
+      <SecondaryText>{secondaryText}</SecondaryText>
     </StyledContainer>
   );
 });

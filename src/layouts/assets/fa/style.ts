@@ -8,7 +8,7 @@ export const fontFace = () => `
   font-weight: 400;
   font-display:auto;
   src: url(${fonts.faRegular400Eot});
-  src: url("${fonts.faRegular400Eot}?#iefix") format("embedded-opentype"), url("${fonts.faLight300}") format("woff2"), url("${fonts.faRegular400Woff}") format("woff"), url("${fonts.faRegular400Ttf}") format("truetype"), url("${fonts.faRegular400Svg}#fontawesome") format("svg");
+  src: url("${fonts.faRegular400Eot}?#iefix") format("embedded-opentype"), url("${fonts.faRegular400Woff2}") format("woff2"), url("${fonts.faRegular400Woff}") format("woff"), url("${fonts.faRegular400Ttf}") format("truetype"), url("${fonts.faRegular400Svg}#fontawesome") format("svg");
 }
 @font-face {
   font-family: "Font Awesome 5 Pro";
@@ -16,7 +16,7 @@ export const fontFace = () => `
   font-weight: 900;
   font-display:auto;
   src: url(${fonts.faSolid900Eot});
-  src: url("${fonts.faSolid900Eot}?#iefix") format("embedded-opentype"), url("${fonts.faLight300}") format("woff2"), url("${fonts.faSolid900Woff}") format("woff"), url("${fonts.faSolid900Ttf}") format("truetype"), url("${fonts.faSolid900Svg}#fontawesome") format("svg");
+  src: url("${fonts.faSolid900Eot}?#iefix") format("embedded-opentype"), url("${fonts.faSolid900Woff2}") format("woff2"), url("${fonts.faSolid900Woff}") format("woff"), url("${fonts.faSolid900Ttf}") format("truetype"), url("${fonts.faSolid900Svg}#fontawesome") format("svg");
 }
 @font-face {
   font-family: "Font Awesome 5 Pro";
