@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@nodert-win10-rs4/windows.applicationmodel.search": "^0.4.0",
+    "co": "^4.6.0",
     "electron-updater": "^4.0.6",
     "file-type": "^10.9.0",
     "gsap": "^2.1.2",

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const ContainerStyled = styled.div`
   background: #e1e1e1;
   box-shadow: 0px 0px 15px #fefefe;
-  border-radius: 10px;
+  border-radius: 7px;
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 10px
+  padding: 5px
 `;
 
 export const StyledWrapper = styled.div`

@@ -1,14 +1,10 @@
-import { BrowserWindow, app, screen } from 'electron';
+import { BrowserWindow, app, screen, protocol } from 'electron';
 import { APP_WIDTH } from '@vergo/shared/constant';
-import { Results } from './results';
+import * as path from 'path';
 import console = require('console');
-// import * as NodeRT from '@nodert-win10-rs4/windows.applicationmodel.search/bin/win32-x64-69';
-declare function require(name:string);
-const { SearchPane } = require('@nodert-win10-rs4/windows.applicationmodel.search/lib/NodeRT_Windows_ApplicationModel_Search.d');
+import { startup, execute } from "./file-search/win32";
 
 app.on('ready', () => {
-  // console.log(NodeRT);
-  const windows  = new SearchPane();
   const { width } = screen.getPrimaryDisplay().workAreaSize;
   let appWidth = width;
   if (width > 1000) {
@@ -33,5 +29,5 @@ app.on('ready', () => {
   win.setBackgroundColor('#00000000');
   win.webContents.openDevTools({ mode: 'detach' });
   win.loadURL('http://localhost:4444/app.html');
-
+  startup();
 });

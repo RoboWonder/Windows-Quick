@@ -10,7 +10,7 @@ export const Container = observer(() => {
     <ContainerStyled>
       <StyledWrapper>
         <SearchBox />
-        <Results visible={true} />
+        <Results visible={controller.resultController.visible} />
       </StyledWrapper>
     </ContainerStyled>
   );
