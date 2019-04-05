@@ -19,7 +19,7 @@ let recursiveSearchDirs = [
   "${APPDATA}\\Microsoft\\Windows\\Start Menu"
 ]
 
-let flatSearchDirs = ["${SystemRoot}\\System32", "${SystemRoot}"];
+let flatSearchDirs = ["C:\\Windows\\System32", "C:\\Windows"];
 
 let searchExtensions = [".appref-ms", ".exe", ".lnk", ".bat", ".url"];
 let lazyIndexingKeys = {};
@@ -45,7 +45,7 @@ const findFilesAndUpdateIndexer = async (dirs, recursive) => {
 
 function updateIndexer(indexKey, files) {
   const indexerElements = searchUtil.filesToIndexerElements(files);
-  console.log(`Indexer has updated ${indexKey}, ${files.length} files`);
+  console.log(`Indexer has updated ${indexKey}, ${files.length} files`, indexerElements);
 }
 
 const lazyRefreshIndex = (dir, recursive) => {

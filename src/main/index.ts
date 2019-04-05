@@ -2,11 +2,13 @@ import { BrowserWindow, app, screen, protocol } from 'electron';
 import { APP_WIDTH } from '@vergo/shared/constant';
 import * as path from 'path';
 import console = require('console');
-import { startup, execute } from "./file-search/win32";
+import { Api } from '@vergo/api';
+// import { startup, execute } from "./file-search/win32";
 
 app.on('ready', () => {
   const { width } = screen.getPrimaryDisplay().workAreaSize;
   let appWidth = width;
+  let api: Api;
   if (width > 1000) {
     appWidth = 1000;
   }
@@ -29,5 +31,6 @@ app.on('ready', () => {
   win.setBackgroundColor('#00000000');
   win.webContents.openDevTools({ mode: 'detach' });
   win.loadURL('http://localhost:4444/app.html');
-  startup();
+  // startup();
+  api = new Api();
 });
