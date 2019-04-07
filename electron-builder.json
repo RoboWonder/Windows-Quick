@@ -1,0 +1,38 @@
+{
+    "appId": "com.vergodt.window-quick",
+    "productName": "Windows Quick",
+    "asar": true,
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets/logo.png"
+    },
+    "publish": "github",
+    "linux": {
+      "category": "Network",
+      "target": [
+        {
+          "target": "deb",
+          "arch": ["ia32", "x64"]
+        },
+        {
+          "target": "AppImage",
+          "arch": ["ia32", "x64"]
+        }
+      ]
+    },
+    "win": {
+      "target": ["zip", "nsis"]
+    },
+    "mac": {
+      "category": "public.app-category.navigation"
+    },
+    "fileAssociations": [
+      {
+        "name": "Document",
+        "description": "Windows Quick is a tool search and command like Spotlight search on Mac OS and more",
+        "role": "Viewer",
+        "ext": "html"
+      }
+    ]
+  }
+  

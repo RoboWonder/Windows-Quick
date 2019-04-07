@@ -13,6 +13,9 @@ const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
   if (e.which === 13) {
     // Enter.
     e.preventDefault();
+    controller.execItem(
+      controller.resultController.selected
+    );
   }
 };
 
@@ -32,7 +35,7 @@ const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     key !== 17 && // ctrl
     key !== 18 && // alt
     key !== 16 && // shift
-    key !== 9 && // tab
+    // key !== 9 && // tab
     key !== 20 && // capslock
     key !== 46 && // delete
     key !== 32 // space
@@ -46,10 +49,10 @@ const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (
       e.keyCode === 40 &&
-      resultController.selected + 1 <= results.length - 1
+      resultController.selected + 1 <= results.length
     ) {
       resultController.selected++;
-    } else if (e.keyCode === 38 && resultController.selected - 1 >= 0) {
+    } else if (e.keyCode === 38 && resultController.selected > 1) {
       resultController.selected--;
     }
 
@@ -58,6 +61,10 @@ const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     );
 
     input.value = suggestion.primaryText;
+  }
+  if(key === 9){
+    input.value = results[0].primaryText;
+    controller.complete();
   }
 };
 

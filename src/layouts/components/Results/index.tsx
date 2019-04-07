@@ -4,20 +4,16 @@ import controller from '@vergo/main/controller';
 import { StyledResults } from './style';
 import { ResultItem } from '../ResultItem';
 
-interface Props {
-  visible: boolean;
-}
-
 const onMouseDown = (e: React.MouseEvent) => {
   e.stopPropagation();
 };
 
-export const Results = observer(({ visible }: Props) => {
+export const Results = observer(() => {
   return (
-    <StyledResults visible={visible} onMouseDown={onMouseDown}>
-    {controller.resultController.results.map(x => {
-      <ResultItem result={x} />
-    })}
+    <StyledResults visible={controller.resultController.results.length > 0} onMouseDown={onMouseDown}>
+    {controller.resultController.results.map(x => (
+      <ResultItem result={x} key={x.id} />
+    ))}
     </StyledResults>
   );
 });

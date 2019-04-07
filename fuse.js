@@ -60,7 +60,7 @@ const getWebIndexPlugin = name => {
 
 const getCopyPlugin = () => {
   return CopyPlugin({
-    files: ['*.woff2', '*.png', '*.svg', '*.eot', '*.ttf', '*.woff'],
+    files: ['*.woff2', '*.png', '*.svg', '*.eot', '*.ttf', '*.woff','*.png'],
     dest: 'assets',
     resolve: production ? './assets' : '/assets',
   });

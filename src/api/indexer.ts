@@ -1,8 +1,10 @@
 import { inArray } from './search';
+import console = require('console');
+import { removeDuplicate } from '@vergo/shared/function';
 export class Indexer {
 
   private pluginId;
-  private items = {};
+  private items = {}  ;
   private results = [];
   constructor() {
   }
@@ -20,6 +22,7 @@ export class Indexer {
   }
 
   search(query: string) {
+    this.results.length = 0;
     const keys = Object.keys(this.items);
     for (let i = 0; i < keys.length; i++) {
       const result = inArray(this.get(keys[i]), query);
@@ -29,5 +32,7 @@ export class Indexer {
         this.results.push(result);
       }
     }
+    this.results = this.results.sort((a,b) => b.score - a.score);
+    return removeDuplicate(this.results, 'primaryText');
   }
 }

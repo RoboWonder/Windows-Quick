@@ -1,14 +1,19 @@
 import { Results } from './results';
 import console = require('console');
 import * as React from 'react';
+import { Api } from '@vergo/api';
+import { ipcRenderer } from 'electron';
 
 export class Controller {
   public inputRef = React.createRef<HTMLInputElement>();
   public resultController = new Results();
   public canComplete = false;
+  public pluginApi = new Api();
   private lastInput: string;
   constructor() {
     console.log('new controller');
+    
+    setInterval(()=>{this.inputRef.current && this.inputRef.current.focus()}, 200);
   }
 
   private autoComplete(text: string, result: string) {
@@ -16,7 +21,6 @@ export class Controller {
     const start = text.length;
 
     const input = this.inputRef.current;
-    console.log(result);
 
     if (result) {
       if (result.toLowerCase().startsWith(text.toLowerCase())) {
@@ -44,6 +48,18 @@ export class Controller {
     });
 
     this.resultController.selected = 0;
+  }
+
+  public execItem(id: number) {
+    let item = this.resultController.results[id-1];
+    this.pluginApi.execute(item);
+    ipcRenderer.send('an-no-di', []);
+  }
+
+  public accept(){
+    const input = this.inputRef.current;
+    input.value = this.lastInput;
+    // input.setSelectionRange(0, 0);
   }
 }
 

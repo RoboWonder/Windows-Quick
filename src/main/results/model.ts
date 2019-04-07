@@ -4,4 +4,6 @@ export class Result {
   id?: number;
   icon?: string;
   hovered?: boolean;
+  url?: string;
+  plugin?: string;
 }

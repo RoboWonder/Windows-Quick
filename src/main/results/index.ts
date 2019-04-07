@@ -1,5 +1,7 @@
 import { observable, computed } from 'mobx';
 import { Result } from './model';
+import controller from '../controller';
+import console = require('console');
 
 export class Results {
 
@@ -14,15 +16,11 @@ export class Results {
     return this.results.length > 0;
   }
   public load(input: HTMLInputElement) {
+    // input.value.length > 0 && controller.pluginApi.search(input.value);
     return new Promise(async (resolve: (result: string) => void, reject) => {
       const filter = input.value.substring(0, input.selectionStart);
-      resolve('Visual Studio Code');
-      this.results = [{
-        primaryText: 'Visual Studio Code',
-        secondaryText: 'Desktop app',
-        id: 1,
-        icon: 'https://www.bing.com/th?id=OIP.lTKtXsFjBhmO8oKSH0jbNAHaFV&w=217&h=160&c=7&o=5&dpr=1.25&pid=1.7'
-      }];
+      this.results = filter ? await controller.pluginApi.search(filter) : [];
+      this.results.length && (resolve(this.results[0].primaryText), this.selected = 1);
     });
   }
 }

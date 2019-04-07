@@ -52,7 +52,8 @@ export const readdir = async (dirPath, recursive, matcher) => {
         try {
           const stat = await _stat(filePath);
           if (stat.isDirectory() && recursive) pendingDirs.push(filePath);
-          if (matcher(filePath, stat)) matchedPaths.push(filePath);
+          const ext = path.extname(filePath).toLowerCase();
+          if (matcher.includes(ext)/* || stat.isDirectory()*/) matchedPaths.push(filePath);
         } catch (e) {}
       }
     } catch (e) {}

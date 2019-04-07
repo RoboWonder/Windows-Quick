@@ -3,11 +3,12 @@ import styled, { css } from 'styled-components';
 export const StyledContainer = styled.div`
   width: 100%;
   height: 48px;
-  display: block;
+  display: flex;
   position: relative;
   align-items: center;
   overflow: hidden;
-  padding: 5px 16px;
+  padding: 5px;
+  border-bottom: 1px solid #f5f5f5;
   &:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
@@ -30,8 +31,8 @@ export const PrimaryText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  opacity: 0.87;
-  margin-bottom: 10px;
+  opacity: 0.98;
+  margin-bottom: 3px;
 `;
 
 export const SecondaryText = styled.div`
@@ -45,9 +46,12 @@ export const SecondaryText = styled.div`
 `;
 
 export const Icon = styled.div`
-  margin-left: 16px;
-  width: 16px;
+  margin-right: 10px;
+  width: 36px;
   min-width: 16px;
-  height: 16px;
+  height: 36px;
+  background-size: 32px 32px;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 

@@ -14,9 +14,16 @@ interface Props {
   result: Result;
 }
 
-export const ResultItem = observer((result: Props) => {
+const onMouseEnter = (result: Result) => () => {
+  controller.resultController.selected = result.id;
+};
+const onClick = (result: Result) => () => {
+  controller.execItem(result.id);
+};
+
+export const ResultItem = observer(({ result }: Props) => {
   const { hovered } = result;
-  const { primaryText, secondaryText } = result;
+  const { primaryText, secondaryText, id, icon } = result;
 
   const selected = controller.resultController.selected === result.id;
 
@@ -24,9 +31,19 @@ export const ResultItem = observer((result: Props) => {
     <StyledContainer
       selected={selected}
       hovered={hovered}
+      onMouseEnter={onMouseEnter(result)}
+      onClick={onClick(result)}
     >
+    <Icon
+        style={{
+          backgroundImage: `url(${icon})`,
+          opacity: 0.9,
+        }}
+      />
+      <div>
       <PrimaryText>{primaryText}</PrimaryText>
       <SecondaryText>{secondaryText}</SecondaryText>
+      </div>
     </StyledContainer>
   );
 });
