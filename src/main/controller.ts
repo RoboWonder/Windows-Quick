@@ -53,7 +53,6 @@ export class Controller {
   public execItem(id: number) {
     let item = this.resultController.results[id-1];
     this.pluginApi.execute(item);
-    ipcRenderer.send('an-no-di', []);
   }
 
   public accept(){

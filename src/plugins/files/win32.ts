@@ -50,6 +50,7 @@ export class Files {
       return;
     }
     this.context.shell.openItem(id);
+    this.context.app.Hide();
   }
 }
 

@@ -47,18 +47,22 @@ export class GoogleSearch{
         for(const item in data){
           results.push(this.parseItem(data[item]));
         }
+        if(results.length === 0) {
+          results.push(this.parseItem(query));
+        }
         resolve(results);
       })
     })
   }
-  execute(url){
+  execute(url) {
     this.context.shell.openExternal(url);
+    this.context.app.Hide();
   }
-  parseItem(str: string){
+  parseItem(str: string) {
     return {
       primaryText: str,
       secondaryText: 'Search with Googe',
-      url: `https://www.google.com/search?q=${str.replace(/ /g,'+')}`,
+      url: `https://www.google.com/search?q=${str.replace(/ /g, '+')}`,
       icon: images.GoogleLogo,
       plugin: 'google'
     }

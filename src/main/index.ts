@@ -2,7 +2,7 @@ import { BrowserWindow, app, screen, protocol, ipcMain, Tray, globalShortcut, ip
 import * as path from 'path';
 import console = require('console');
 import { IconCacher } from './icon-cacher';
-// import * as native from '@vergo/api/windows-util';
+import * as windowsUtil from '@vergo/api/windows-util';
 
 // import { startup, execute } from "./file-search/win32";
 let tray: Tray;
@@ -31,6 +31,7 @@ app.on('ready', () => {
   });
   ipcMain.on('an-no-di', () => {
     win.hide();
+    windowsUtil.restoreFocus();
   });
   win.setBackgroundColor('#00000000');
   win.webContents.openDevTools({ mode: 'detach' });
@@ -41,6 +42,7 @@ app.on('ready', () => {
   });
   const ret = globalShortcut.register('Alt+Space', () => {
     !win.isVisible() && win.show()
+    windowsUtil.saveFocus();
   });
   (new IconCacher());
   // console.log(native);

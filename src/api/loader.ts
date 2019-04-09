@@ -1,29 +1,28 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import console = require('console');
-import { getPath } from '@vergo/shared/path';
 import { Files } from '@vergo/plugins/files/win32';
 import { GoogleSearch } from '@vergo/plugins/google-search';
-import { Indexer } from './indexer';
-import * as shell from "./shell";
-import { HttpRequest } from './http-request';
+import { CMD } from '@vergo/plugins/cmd';
+import { Help } from '@vergo/plugins/help';
+import { StringMath } from '@vergo/plugins/string-math';
 
 export class Loader {
   private _loaded: string[] = [];
+  private context: any;
   public plugins = {};
-  constructor(){
+  constructor(context: any) {
+    this.context = context;
     this.mainPlugin();
     // this.load();
   }
 
-  mainPlugin(){
-    const _context = {
-      indexer: new Indexer(),
-      shell: shell,
-      request: new HttpRequest(),
-    }
-    this.plugins['files'] = new Files(_context);
-    this.plugins['google'] = new GoogleSearch(_context);
+  mainPlugin() {
+    this.plugins['files'] = new Files(this.context);
+    this.plugins['google'] = new GoogleSearch(this.context);
+    this.plugins['>'] = new CMD(this.context);
+    this.plugins['?'] = new Help(this.context);
+    this.plugins[':'] = new StringMath(this.context);
   }
   public load() {
     fs.readdir(pluginPath, (err, dirs) => {
